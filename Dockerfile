@@ -41,6 +41,7 @@ RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_
 
 WORKDIR /app
 COPY . .
+RUN chmod +x /app/redhat_ai.py
 
 ENV device_type=cuda
 
