@@ -23,10 +23,6 @@ from transformers import (
 
 from constants import EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME
 
-#get your HF token :)
-token = "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"
-HfFolder.save_token(token)
-
 def load_model(device_type, model_id, model_basename=None):
     """
     Select a model for text generation using the HuggingFace library.
