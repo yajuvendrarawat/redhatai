@@ -3,7 +3,7 @@ import logging
 import click
 import torch
 from auto_gptq import AutoGPTQForCausalLM
-from huggingface_hub import hf_hub_download
+from huggingface_hub import hf_hub_download, HfFolder
 from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline, LlamaCpp
@@ -23,6 +23,9 @@ from transformers import (
 
 from constants import EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME
 
+#get your HF token :)
+token = "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"
+HfFolder.save_token(token)
 
 def load_model(device_type, model_id, model_basename=None):
     """
