@@ -77,7 +77,7 @@ def load_model(device_type, model_id, model_basename=None):
                 model_id,
                 model_basename=model_basename,
                 use_safetensors=True,
-                max_memory={ 0: "15GIB", 1: "15GIB" },
+                #max_memory={ 0: "15GIB", 1: "15GIB" }, #removed this line as a test
                 trust_remote_code=True,
                 device="cuda:0",
                 use_triton=False,
