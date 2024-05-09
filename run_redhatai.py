@@ -190,7 +190,7 @@ def main(device_type, show_sources):
     logging.info(f"Running on: {device_type}")
     logging.info(f"Display Source Documents set to: {show_sources}")
 
-    print(f"Running on: {device_type}")
+    print(f"Running on device: {device_type}")
     print(f"Display Source Documents set to: {show_sources}")
 
     embeddings = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": device_type})
