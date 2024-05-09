@@ -187,7 +187,7 @@ def main(device_type, show_sources):
     5. Question answers.
     """
 
-    logging.info(f"Running on: {device_type}")
+    logging.info(f"Running on device: {device_type}")
     logging.info(f"Display Source Documents set to: {show_sources}")
 
     print(f"Running on device: {device_type}")
