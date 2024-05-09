@@ -1,4 +1,5 @@
 # Natural Language Processing
+torch
 langchain
 langchain-chroma
 #chromadb==0.4.6
