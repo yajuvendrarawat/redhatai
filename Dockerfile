@@ -5,12 +5,12 @@ FROM nvidia/cuda:12.4.1-runtime-ubi9
 
 # Install required libraries and dependencies for Streamlit ==3.10 remove the SQLite error
 RUN yum install -y \
-    python3 \
+    python3.11 \
     python3-pip \
     python \
     gcc \
     gcc-c++ \
-    python3-devel \
+    python3.11-devel \
  && yum clean all
  
 #RUN yum -y update \
