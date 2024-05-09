@@ -1,4 +1,5 @@
 # Natural Language Processing
+pysqlite3-binary
 torch
 langchain
 langchain-chroma
