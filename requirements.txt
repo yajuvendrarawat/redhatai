@@ -15,7 +15,7 @@ transformers
 auto-gptq
 docx2txt
 unstructured
-sqlite3
+sqlite
 
 # Utilities
 urllib3
