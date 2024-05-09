@@ -110,7 +110,7 @@ def ingestdocc():
 
 with st.sidebar:
     st.title(':red[_Converse with your Data_]')
-    st.caption('Developed by Abhishek Vijra. AOT APAC RED HAT SG ') 
+    st.caption('Developed by Abhishek Vijra and Updated by Yajuvendra. AOT APAC RED HAT SG ') 
     st.caption('Powered by Red hat Openshift') 
     uploaded_files = st.file_uploader("Upload your Document", accept_multiple_files=True)
       
