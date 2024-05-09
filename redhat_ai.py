@@ -4,8 +4,8 @@ import os
 import shutil
 import streamlit as st
 from run_redhatai import load_model
-from langchain.vectorstores import Chroma
-from langchain.vectorstores import FAISS
+#from langchain.vectorstores import Chroma
+from langchain_chroma import Chroma
 from constants import CHROMA_SETTINGS, EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME, SOURCE_DIRECTORY
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.chains import RetrievalQA
@@ -63,8 +63,7 @@ def initialize_session_result_state():
         st.session_state.EMBEDDINGS = EMBEDDINGS
 
     if "DB" not in st.session_state:
-        #DB = Chroma(persist_directory=PERSIST_DIRECTORY,embedding_function=st.session_state.EMBEDDINGS,client_settings=CHROMA_SETTINGS)
-        DB = FAISS(text_chunks,embedding_function=st.session_state.EMBEDDINGS)
+        DB = Chroma(persist_directory=PERSIST_DIRECTORY,embedding_function=st.session_state.EMBEDDINGS,client_settings=CHROMA_SETTINGS)
         if DB is None:
             print("Failed to initialize DB in initialize_session_db_state")
         st.session_state.DB = DB
