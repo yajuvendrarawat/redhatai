@@ -21,6 +21,7 @@ DEVICE_TYPE = "cuda" if torch.cuda.is_available() else "cpu"
 
 def model_memory():
     # Adding history to the model.
+    ptint("entering model_memory")
     template = """Use the following pieces of context to answer the question at the end. If you don't know the answer,\
     just say that you don't know, don't try to make up an answer.
     
@@ -32,7 +33,7 @@ def model_memory():
 
     prompt = PromptTemplate(input_variables=["history", "context", "question"], template=template)
     memory = ConversationBufferMemory(input_key="question", memory_key="history")
-
+    ptint("Exiting model_memory")
     return prompt, memory
 
 def initialize_session_result_state():
