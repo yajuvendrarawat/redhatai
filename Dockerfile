@@ -10,6 +10,7 @@ RUN yum install -y \
     python \
     gcc \
     gcc-c++ \
+    python3-devel \
  && yum clean all
  
 #RUN yum -y update \
