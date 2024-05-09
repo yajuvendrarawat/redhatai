@@ -6,8 +6,8 @@ from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_compl
 from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.text_splitter import Language, RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.vectorstores import FAISS
+#from langchain.vectorstores import Chroma
+from langchain_chroma import Chroma
 
 from constants import (
     CHROMA_SETTINGS,
@@ -139,16 +139,13 @@ def main(device_type):
     # run_localGPT.py file.
 
     # embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
-
-    #db = Chroma.from_documents(
-    #    texts,
-    #    embeddings,
-    #    persist_directory=PERSIST_DIRECTORY,
-    #    client_settings=CHROMA_SETTINGS,
-    #)
-
-    #yaju
-    db = FAISS.from_documents(texts,embeddings)
+    
+    db = Chroma.from_documents(
+        texts,
+        embeddings,
+        persist_directory=PERSIST_DIRECTORY,
+        client_settings=CHROMA_SETTINGS,
+    )
 
 if __name__ == "__main__":
     logging.basicConfig(
