@@ -1,7 +1,7 @@
 # Natural Language Processing
 langchain
 chromadb
-llama-cpp-python
+#llama-cpp-python
 #pdfminer.six==20221105
 InstructorEmbedding
 #sentence-transformers
