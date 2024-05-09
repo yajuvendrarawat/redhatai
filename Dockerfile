@@ -5,12 +5,12 @@ FROM nvidia/cuda:12.4.1-runtime-ubi9
 
 # Install required libraries and dependencies for Streamlit ==3.10 remove the SQLite error
 RUN yum install -y \
-    python3.11 \
-    python3.11-pip \
+    python \
+    python-pip \
     python \
     gcc \
     gcc-c++ \
-    python3.11-devel \
+    python-devel \
  && yum clean all
 
 ## MAKE ALL BELOW RUN COMMANDS USE THE NEW PYTHON ENVIRONMENT
@@ -48,11 +48,11 @@ COPY ./env_config.yml /tmp/env_config.yml
 
 COPY ./requirements.txt . 
 
-RUN --mount=type=cache,target=/root/.cache  pip3.11 install --timeout 100 -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache  pip install --timeout 100 -r requirements.txt
 
 #RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python
 #COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
-ENV LD_LIBRARY_PATH /usr/local/lib/python3.11/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3.11/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH /usr/local/lib/python3/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
 
 WORKDIR /app
 COPY . .
