@@ -12,7 +12,10 @@ RUN yum install -y \
     gcc-c++ \
     python3.11-devel \
  && yum clean all
- 
+
+## MAKE ALL BELOW RUN COMMANDS USE THE NEW PYTHON ENVIRONMENT
+RUN echo "alias pip='python3 -m pip'" >> ~/.bashrc
+
 #RUN yum -y update \
 #    && yum -y install gcc  \
 #    && yum -y install gcc-c++  \
