@@ -43,10 +43,13 @@ def load_model(device_type, model_id, model_basename=None):
     """
     logging.info(f"Loading Model: {model_id}, on: {device_type}")
     logging.info("This action can take a few minutes!")
+    print(f"Loading Model: {model_id}, on: {device_type}")
+    print("This action can take a few minutes!")
 
     if model_basename is not None:
         if ".ggml" in model_basename:
             logging.info("Using Llamacpp for GGML quantized models")
+            print("Using Llamacpp for GGML quantized models")
             model_path = hf_hub_download(repo_id=model_id, filename=model_basename, resume_download=True)
             max_ctx_size = 4096
             kwargs = {
@@ -65,6 +68,7 @@ def load_model(device_type, model_id, model_basename=None):
             # The code supports all huggingface models that ends with GPTQ and have some variation
             # of .no-act.order or .safetensors in their HF repo.
             logging.info("Using AutoGPTQForCausalLM for quantized models")
+            print("Using AutoGPTQForCausalLM for quantized models")
 
             if ".safetensors" in model_basename:
                 # Remove the ".safetensors" ending if present
@@ -72,6 +76,7 @@ def load_model(device_type, model_id, model_basename=None):
 
             tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=True)
             logging.info("Tokenizer loaded")
+            print("Tokenizer loaded")
 
             model = AutoGPTQForCausalLM.from_quantized(
                 model_id,
@@ -88,8 +93,10 @@ def load_model(device_type, model_id, model_basename=None):
     ):  # The code supports all huggingface models that ends with -HF or which have a .bin
         # file in their HF repo.
         logging.info("Using AutoModelForCausalLM for full models")
+        print("Using AutoModelForCausalLM for full models")
         tokenizer = AutoTokenizer.from_pretrained(model_id)
         logging.info("Tokenizer loaded")
+        print("Tokenizer loaded")
 
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
@@ -102,6 +109,7 @@ def load_model(device_type, model_id, model_basename=None):
         model.tie_weights()
     else:
         logging.info("Using LlamaTokenizer")
+        print("Using LlamaTokenizer")
         tokenizer = LlamaTokenizer.from_pretrained(model_id)
         model = LlamaForCausalLM.from_pretrained(model_id)
 
@@ -126,6 +134,7 @@ def load_model(device_type, model_id, model_basename=None):
 
     local_llm = HuggingFacePipeline(pipeline=pipe)
     logging.info("Local LLM Loaded")
+    print("Local LLM Loaded")
 
     return local_llm
 
@@ -180,6 +189,9 @@ def main(device_type, show_sources):
 
     logging.info(f"Running on: {device_type}")
     logging.info(f"Display Source Documents set to: {show_sources}")
+
+    print(f"Running on: {device_type}")
+    print(f"Display Source Documents set to: {show_sources}")
 
     embeddings = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": device_type})
 
