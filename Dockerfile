@@ -14,7 +14,7 @@ RUN yum install -y \
  && yum clean all
 
 ## MAKE ALL BELOW RUN COMMANDS USE THE NEW PYTHON ENVIRONMENT
-RUN echo "alias pip='python3 -m pip'" >> ~/.bashrc
+#RUN echo "alias pip='python3 -m pip'" >> ~/.bashrc
 
 #RUN yum -y update \
 #    && yum -y install gcc  \
@@ -48,11 +48,11 @@ COPY ./env_config.yml /tmp/env_config.yml
 
 COPY ./requirements.txt . 
 
-RUN --mount=type=cache,target=/root/.cache  pip install --timeout 100 -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache  pip3.11 install --timeout 100 -r requirements.txt
 
 #RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python
 #COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
-ENV LD_LIBRARY_PATH /usr/local/lib/python3.9/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3.9/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH /usr/local/lib/python3.11/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3.11/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
 
 WORKDIR /app
 COPY . .
