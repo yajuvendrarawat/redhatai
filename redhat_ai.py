@@ -34,7 +34,7 @@ def model_memory():
 
     prompt = PromptTemplate(input_variables=["history", "context", "question"], template=template)
     memory = ConversationBufferMemory(input_key="question", memory_key="history")
-    ptint("Exiting model_memory")
+    print("Exiting model_memory")
     return prompt, memory
 
 def initialize_session_result_state():
