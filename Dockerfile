@@ -55,6 +55,7 @@ RUN --mount=type=cache,target=/root/.cache  pip install --timeout 100 -r require
 ENV LD_LIBRARY_PATH /usr/local/lib/python3.9/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3.9/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
 
 WORKDIR /app
+RUN mkdir SOURCE_DOCUMENTS
 COPY . .
 RUN chmod +x /app/redhat_ai.py
 
