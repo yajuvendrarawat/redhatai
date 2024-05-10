@@ -88,6 +88,7 @@ def load_model(device_type, model_id, model_basename=None):
                 use_triton=False,
                 quantize_config=None,
             )
+            print("AutoGPTQForCausalLM Model Created")
     elif (
         device_type.lower() == "cuda"
     ):  # The code supports all huggingface models that ends with -HF or which have a .bin
@@ -106,6 +107,7 @@ def load_model(device_type, model_id, model_basename=None):
             trust_remote_code=True,
             max_memory={0: "15GB"} # Uncomment this line with you encounter CUDA out of memory errors
         )
+        print("AutoModelForCausalLM Model Created")
         model.tie_weights()
     else:
         logging.info("Using LlamaTokenizer")
@@ -118,7 +120,7 @@ def load_model(device_type, model_id, model_basename=None):
     # see here for details:
     # https://huggingface.co/docs/transformers/
     # main_classes/text_generation#transformers.GenerationConfig.from_pretrained.returns
-
+    print("Starting pipeline")
     # Create a pipeline for text generation
     pipe = pipeline(
         "text-generation",
@@ -131,6 +133,7 @@ def load_model(device_type, model_id, model_basename=None):
         repetition_penalty=1.15,
         generation_config=generation_config,
     )
+    print("Done pipeline")
 
     local_llm = HuggingFacePipeline(pipeline=pipe)
     logging.info("Local LLM Loaded")
