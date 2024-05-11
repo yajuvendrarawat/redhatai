@@ -50,7 +50,7 @@ COPY ./requirements.txt .
 
 RUN --mount=type=cache,target=/root/.cache  pip install --timeout 100 -r requirements.txt
 
-RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUDAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python
+#RUN --mount=type=cache,target=/root/.cache CMAKE_ARGS="-DLLAMA_CUDAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python
 #COPY SOURCE_DOCUMENTS ./SOURCE_DOCUMENTS
 ENV LD_LIBRARY_PATH /usr/local/lib/python3.9/site-packages/nvidia/cudnn/lib/:/usr/local/lib/python3.9/site-packages/nvidia/cuda_cupti/lib/:$LD_LIBRARY_PATH
 
