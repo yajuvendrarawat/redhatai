@@ -71,11 +71,11 @@ EMBEDDING_MODEL_NAME = "hkunlp/instructor-large" # Uses 1.5 GB of VRAM (High Acc
 #MODEL_ID = "TheBloke/vicuna-13B-v1.5-GPTQ"
 #MODEL_BASENAME = "model.safetensors"
 
-MODEL_ID = "TheBloke/vicuna-7B-v1.5-GPTQ"
-MODEL_BASENAME = "model.safetensors"
-
-#MODEL_ID = "yajuvendra/Llama-2-7b-chat-finetune"
+#MODEL_ID = "TheBloke/vicuna-7B-v1.5-GPTQ"
 #MODEL_BASENAME = "model.safetensors"
+
+MODEL_ID = "yajuvendra/Llama-2-7b-chat-finetune"
+MODEL_BASENAME = "NousResearch/Llama-2-7b-chat-hf"
 
 ####
 #### (FOR HF MODELS)
